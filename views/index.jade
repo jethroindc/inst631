@@ -1,5 +1,24 @@
 extends layout
 
+block menu
+    +menu
+
 block content
-  h1= title
-  p Welcome to #{title}
+    .row
+        .col-xs-6
+            a.btn.btn-primary.btn-large(href="/lend") 
+                img(src="images/lend-icon-small.png")
+                | Lend
+        .col-xs-6
+            a.btn.btn-primary.btn-large(href="/borrow")
+                img(src="images/borrow-icon-small.png")
+                | Borrow
+    .row.top-buffer.row.top-buffer
+        .col-xs-6
+            a.btn.btn-primary.btn-large(href="/track") 
+                img(src="images/track-icon-small.png")
+                | Track
+        .col-xs-6
+            a.btn.btn-primary.btn-large(href="/reminders") 
+                img(src="images/reminders-icon-small.png")
+                | Reminders  

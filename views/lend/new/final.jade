@@ -1,0 +1,11 @@
+extends ../../layout
+
+block menu
+    +menu
+
+block content
+    p For the next 3 days, this loan plan with be set as 'Pending'. You or [borrower] can make unlimited changes during this time.  On [date], this plan will become a binding agreement.  At that point, it cannot be changed and both parties much accept the terms.
+    +bottom_menu( 'No, Go Back', '/lend/new/groups/select', 'I Understand', '/lend/new/sent' )
+        
+    
+        

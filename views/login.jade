@@ -1,0 +1,14 @@
+extends layout
+
+block css
+    link(href="/stylesheets/login.css", rel="stylesheet")
+
+block content
+    form.form-signin
+        h1 Bum-A-Buck
+        h2.form-signin-heading Please sign in
+            label(for="inputEmail",class="sr-only") Email address
+            input#inputEmail(type="email",class="form-control",placeholder="email address",required,autofocus)
+            label(for="inputPassword",class="sr-only") Password
+            input#inputPassword(type="password",class="form-control",placeholder="password",required)
+            button(class="btn btn-lg btn-primary btn-block",type="submit") Sign in

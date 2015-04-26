@@ -1,0 +1,43 @@
+extends ../../layout
+
+block menu
+    +menu
+
+block content
+    form
+        .row 
+            .col-xs-6
+                h4 You
+            .col-xs-6
+                h4 Borrower
+        .row
+            .col-xs-6
+                .checkbox 
+                    label
+                        input(type="checkbox")
+                        | Email
+            .col-xs-6
+                .checkbox 
+                    label
+                        input(type="checkbox")
+                        | Email
+        .row
+            .col-xs-6
+                .checkbox 
+                    label
+                        input(type="checkbox")
+                        | Text
+            .col-xs-6
+                .checkbox 
+                    label
+                        input(type="checkbox")
+                        | Text
+                        
+        .form-group
+            label(for="num_installments") Days before payment is due
+            input.form-control(type="number")
+            
+    +bottom_menu( 'No, Go Back', '/lend/new/amount', 'Yes, Continue', '/lend/new/review' )
+        
+    
+        

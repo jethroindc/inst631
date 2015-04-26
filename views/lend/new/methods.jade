@@ -1,0 +1,27 @@
+extends ../../layout
+
+block menu
+    +menu
+
+block content
+    form
+        .checkbox 
+            label
+                input(type="checkbox")
+                | Cash
+        .checkbox 
+            label
+                input(type="checkbox")
+                | Money Order
+        .checkbox 
+            label
+                input(type="checkbox")
+                | Online Transfer
+        .checkbox 
+            label
+                input(type="checkbox")
+                | Goods or Services
+    +bottom_menu( 'No, Go Back', '/lend/new/amount', 'Yes, Continue', '/lend/new/installments' )
+        
+    
+        
