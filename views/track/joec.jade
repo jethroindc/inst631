@@ -1,0 +1,28 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    img.center-block(src="/images/track_joec.png")
+    .row
+        .col-xs-5
+        .col-xs-2
+            table.table.table-hover
+                tbody
+                    tr
+                        td owes you
+                        td
+                            span.label-warning $20.50
+                    tr(onclick="/track/payments
+                        td has paid
+                        td
+                            span.label-success $129.50
+                        td
+                            span.glyphicon.glyphicon-chevron-right
+        .col-xs-5
+                            
+        
+        
+    
+        

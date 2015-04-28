@@ -1,0 +1,27 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    .row
+        .col-xs-12
+            h3 Select an agreement
+            table.table.table-condensed.table-bordered.table-striped.table-hover
+                thead
+                    tr
+                        th Due
+                        th Borrower
+                        th Total
+                tbody
+                    tr(onclick="document.location='/lend/current/info'")
+                        td 6/8/15
+                        td Kelly T.
+                        td $350
+                    tr(onclick="document.location='/lend/current/info'")
+                        td 3/28/16
+                        td Joe C.
+                        td $200
+        
+    
+        

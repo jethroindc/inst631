@@ -20,7 +20,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // all of our routes that map paths to templates
 mapRoute( '/', 'index', 'Welcome' );
 mapRoute( '/login', 'login', 'Login' );
+mapRoute( '/track', 'track/home', 'Tracking' );
+mapRoute( '/track/joec', 'track/joec', 'Tracking - Joe C.' );
+mapRoute( '/track/payments', 'track/payments', 'Tracking - Joe C.' );
 mapRoute( '/lend', 'lend/home', 'Lending' );
+mapRoute( '/lend/current', 'lend/current', 'Active Agreements' );
+mapRoute( '/lend/current/info', 'lend/current/info', 'PDF Agreement' );
 mapRoute( '/lend/new', 'lend/new/start', 'New Loan Plan' );
 mapRoute( '/lend/new/groups', 'lend/new/groups', 'Select Person to Lend To' );
 mapRoute( '/lend/new/groups/select', 'lend/new/groups_select', 'Select Person to Lend To' );
