@@ -7,11 +7,11 @@ block content
     form
         .radio 
             label
-                input(type="radio",onclick="jQuery('#next').attr('href','/lend/new/reminders')",name="install")
+                input(type="radio",onclick="jQuery('#next').attr('href','/lend/new/installments/schedule')",name="install")
                 | Yes
         .radio 
             label
-                input(type="radio",onclick="jQuery('#next').attr('href','/lend/new/installments/schedule')",name="install")
+                input(type="radio",onclick="jQuery('#next').attr('href','/lend/new/reminders')",name="install")
                 | No
     +bottom_menu( 'No, Go Back', '/lend/new/amount', 'Yes, Continue', '/lend/new/installments/schedule' )
         

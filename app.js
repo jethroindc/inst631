@@ -32,6 +32,7 @@ mapRoute( '/track/joec/receive', 'track/receive', 'Tracking - Receive Payment' )
 mapRoute( '/track/joec/receive/cash', 'track/cash', 'Tracking - Receive Cash' );
 mapRoute( '/track/received', 'track/received', 'Tracking - Payment Received' );
 mapRoute( '/track/marie', 'track/marie', 'Tracking - Marie' );
+mapRoute( '/track/sent', 'track/sent', 'Tracking - Payment Sent' );
 mapRoute( '/track/marie/payment', 'track/marie_make_payment', 'Tracking - Marie' );
 
 // lend
@@ -40,7 +41,7 @@ mapRoute( '/lend/current', 'lend/current', 'Active Agreements' );
 mapRoute( '/lend/current/info', 'lend/current/info', 'PDF Agreement' );
 
 // lend - new
-mapRoute( '/lend/new', 'lend/new/start', 'New Loan Plan' );
+mapRoute( '/lend/new', 'lend/new/start', 'New Lending Agreement' );
 mapRoute( '/lend/new/groups', 'lend/new/groups', 'Select Person to Lend To' );
 mapRoute( '/lend/new/groups/select', 'lend/new/groups_select', 'Select Person to Lend To' );
 mapRoute( '/lend/new/amount', 'lend/new/amount', 'Amount to Lend' );
@@ -52,6 +53,7 @@ mapRoute( '/lend/new/reminders/info', 'lend/new/reminders_info', 'How should we 
 mapRoute( '/lend/new/review', 'lend/new/lets_review', 'Let\'s Review' );
 mapRoute( '/lend/new/final', 'lend/new/final', 'Final Review' );
 mapRoute( '/lend/new/sent', 'lend/new/sent', 'Your Plan Has Been Sent' );
+mapRoute( '/lend/new/contact', 'lend/new/contact', 'Add New Contact' );
 
 // borrow
 mapRoute( '/borrow', 'borrow/home', 'Request to borrow money (step 1 of 5)' );
