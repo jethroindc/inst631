@@ -1,0 +1,17 @@
+extends ../layout
+
+
+block menu
+    +menu
+
+block content
+    h3 Review your borrowing request
+    p {{curreent user}} would like to borrow
+    p 
+        strong $125.00
+    p and would agree to repay by
+    p
+        strong July 7, 2015
+    +bottom_menu( 'No, go back', '/borrow/repay', 'Send Request to Joe A', '/')        
+    
+

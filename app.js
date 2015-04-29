@@ -15,17 +15,31 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// setup our static paths
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
 
 // all of our routes that map paths to templates
 mapRoute( '/', 'index', 'Welcome' );
+mapRoute( '/account', 'account', 'Edit Your Account' );
 mapRoute( '/login', 'login', 'Login' );
+
+// track
 mapRoute( '/track', 'track/home', 'Tracking' );
 mapRoute( '/track/joec', 'track/joec', 'Tracking - Joe C.' );
-mapRoute( '/track/payments', 'track/payments', 'Tracking - Joe C.' );
+mapRoute( '/track/joec/receive', 'track/receive', 'Tracking - Receive Payment' );
+mapRoute( '/track/joec/receive/cash', 'track/cash', 'Tracking - Receive Cash' );
+mapRoute( '/track/received', 'track/received', 'Tracking - Payment Received' );
+mapRoute( '/track/marie', 'track/marie', 'Tracking - Marie' );
+mapRoute( '/track/marie/payment', 'track/marie_make_payment', 'Tracking - Marie' );
+
+// lend
 mapRoute( '/lend', 'lend/home', 'Lending' );
 mapRoute( '/lend/current', 'lend/current', 'Active Agreements' );
 mapRoute( '/lend/current/info', 'lend/current/info', 'PDF Agreement' );
+
+// lend - new
 mapRoute( '/lend/new', 'lend/new/start', 'New Loan Plan' );
 mapRoute( '/lend/new/groups', 'lend/new/groups', 'Select Person to Lend To' );
 mapRoute( '/lend/new/groups/select', 'lend/new/groups_select', 'Select Person to Lend To' );
@@ -38,6 +52,13 @@ mapRoute( '/lend/new/reminders/info', 'lend/new/reminders_info', 'How should we 
 mapRoute( '/lend/new/review', 'lend/new/lets_review', 'Let\'s Review' );
 mapRoute( '/lend/new/final', 'lend/new/final', 'Final Review' );
 mapRoute( '/lend/new/sent', 'lend/new/sent', 'Your Plan Has Been Sent' );
+
+// borrow
+mapRoute( '/borrow', 'borrow/home', 'Request to borrow money (step 1 of 5)' );
+mapRoute( '/borrow/from', 'borrow/from', 'Request to borrow money (step 2 of 5)' );
+mapRoute( '/borrow/from/select', 'borrow/from_select', 'Request to borrow money (step 3 of 5)' );
+mapRoute( '/borrow/repay', 'borrow/repay', 'Request to borrow money (step 4 of 5)' );
+mapRoute( '/borrow/review', 'borrow/review', 'Review your request to borrow money (step 5 of 5)' );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

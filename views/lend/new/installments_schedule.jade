@@ -12,11 +12,20 @@ block content
                 option Week
                 option Month
         .form-group
-            label(for="start_date") Start Date
-            input.form-control(type="date")
+            label(for="start") Start Date
+            .input-group
+                input#start.form-control.dates(type="date")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+        .form-group
+            label(for="end") End Date
+            .input-group
+                input#end.form-control.dates(type="date")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
         .form-group
             label(for="num_installments") Number of Installments
-            input.form-control(type="number")
+            p.form-control-static 7
         .form-group
             label.control-label Amount Due With Each Installment
             p.form-control-static $150.00
@@ -29,6 +38,9 @@ block content
             
 
     +bottom_menu( 'No, Go Back', '/lend/new/amount', 'Yes, Continue', '/lend/new/reminders' )
+    
+block append script
+    +nice_date( ".dates" )
         
     
         

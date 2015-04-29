@@ -1,0 +1,14 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    form
+        .form-group
+            label(for="amount") How much do you want to borrow?
+            .input-group
+                span.input-group-addon $
+                input#amount.form-control(type="text")
+    +bottom_menu( 'No, Go Home', '/', 'Yes, Continue', '/borrow/from' )        
+        

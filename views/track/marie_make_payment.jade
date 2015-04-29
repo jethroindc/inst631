@@ -1,0 +1,21 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    form
+        .form-group
+            label(for="amount") How much do you want to pay via your online account? *
+            .input-group
+                span.input-group-addon $
+                input#amount.form-control(type="text")
+                
+    .alert.alert-success 
+        strong Please Note
+        |  Payment will be processed using account set up in account settings
+    
+                
+    
+    +bottom_menu( 'No, Go Back', '/track/joec/receive', 'Record Cash', '/track/received' )
+        

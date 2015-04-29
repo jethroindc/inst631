@@ -1,0 +1,15 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    .row
+        .col-xs-12 What kind of payment did you recieve?
+    .row.top-buffer
+        a.btn.btn-default.btn-block(href="/track/joec/receive/paypal") PayPal
+        a.btn.btn-default.btn-block(href="/track/joec/receive/check") Check
+        a.btn.btn-default.btn-block(href="/track/joec/receive/cash") Cash
+        a.btn.btn-default.btn-block(href="/track/joec/receive/other") Other
+        
+    +bottom_menu( 'No, Go Back', '/track/joec')

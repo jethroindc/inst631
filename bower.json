@@ -1,0 +1,24 @@
+{
+  "name": "inst631",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jethroindc/inst631",
+  "authors": [
+    "jalexander <jalexander@hippocampussolutoins.com>"
+  ],
+  "moduleType": [
+    "es6",
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14"
+  }
+}

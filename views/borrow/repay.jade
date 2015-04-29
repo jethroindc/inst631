@@ -1,0 +1,19 @@
+extends ../layout
+
+
+block menu
+    +menu
+
+block content
+    form
+        .form-group
+            label(for="when") When will you repay the money
+            .input-group
+                input#when.form-control(type="date")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+                
+    +bottom_menu( 'No, Go Home', '/', 'Yes, Continue', '/borrow/review' )        
+
+block append script 
+    +nice_date( '#when' )

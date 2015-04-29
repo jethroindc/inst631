@@ -4,23 +4,37 @@ block menu
     +menu
 
 block content
-    img.center-block(src="/images/track_joec.png")
+    img.center-block.img-responsive(src="/images/track_joec.png")
     .row
-        .col-xs-5
-        .col-xs-2
-            table.table.table-hover
+        .col-xs-7
+            table.table.table-hover.table-bordered
                 tbody
                     tr
-                        td owes you
+                        th owes you
                         td
                             span.label-warning $20.50
-                    tr(onclick="/track/payments
-                        td has paid
+                    tr
+                        th has paid
                         td
                             span.label-success $129.50
-                        td
-                            span.glyphicon.glyphicon-chevron-right
+                    tr
+                        th next payment due by
+                        td 05/12/2015
         .col-xs-5
+            a.btn.btn-default(href="/track/joec/receive") Record Payment
+    .row
+        .col-xs-12
+            h4 Payment History
+            .list-group
+                .list-group-item
+                    h4.list-group-item-heading 03/02/2015
+                    p.list-group-item-text Transfer
+                        span.label.label-success.pull-right $64.75
+                .list-group-item
+                    h4.list-group-item-heading 02/25/2015
+                    p.list-group-item-text Check
+                        span.label.label-success.pull-right $45.30
+                    
                             
         
         

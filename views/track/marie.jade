@@ -1,0 +1,36 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    img.center-block.img-responsive(src="/images/track_marie.png")
+    .row
+        .col-xs-7
+            table.table.table-hover.table-bordered
+                tbody
+                    tr
+                        th you owe
+                        td
+                            span.label-warning $75.00
+                    tr
+                        th you have paid
+                        td
+                            span.label-success $175.00
+                    tr
+                        th next payment due by
+                        td 05/12/2015
+        .col-xs-5
+            a.btn.btn-default(href="/track/marie/payment") Make Payment
+    .row
+        .col-xs-12
+            h4 Payment History
+            .list-group
+                .list-group-item
+                    h4.list-group-item-heading 03/09/2015
+                    p.list-group-item-text Other
+                        span.label.label-success.pull-right $100.00
+                .list-group-item
+                    h4.list-group-item-heading 02/27/2015
+                    p.list-group-item-text Cash
+                        span.label.label-success.pull-right $75.00

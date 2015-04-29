@@ -14,25 +14,21 @@ mixin menu
             .collapse#navbar.navbar-collapse
                 ul.nav.navbar-nav
                     li
-                        a(href="#") 
+                        a(href="/account") 
                             span.glyphicon.glyphicon-star
                             | Account
                     li
-                        a(href="/lend") 
+                        a(href="/lend/new") 
                             span.glyphicon.glyphicon-open
                             | Lend
                     li
-                        a(href="#") 
+                        a(href="/borrow") 
                             span.glyphicon.glyphicon-save
-                            |Borrow
+                            | Borrow
                     li
-                        a(href="#") 
+                        a(href="/track") 
                             span.glyphicon.glyphicon-ok-circle
                             | Track
-                    li
-                        a(href="#") 
-                            span.glyphicon.glyphicon-bell
-                            | Reminders
                     li
                         a(href="#") 
                             span.glyphicon.glyphicon-arrow-right
@@ -42,15 +38,18 @@ mixin bottom_menu(prev, prev_link, next, next_link )
     if next
         .row.top-buffer
             .col-xs-6
-                a.btn.btn-default(href=prev_link)= prev
+                a.btn.btn-default#prev(href=prev_link)= prev
             .col-xs-6
-                a.btn.btn-default(href=next_link)= next
+                a.btn.btn-default#next(href=next_link)= next
     else
         .row.top-buffer
             .col-xs-12
-                a.btn.btn-default(href=prev_link)= prev
+                a.btn.btn-default#prev(href=prev_link)= prev
             
     
+mixin nice_date( date_id ) 
+    script jQuery( function() { $( '#{date_id}' ).datetimepicker( { format: 'MM/D/YYYY' }); });
+        
             
 html( lang="en" )
     head
@@ -62,6 +61,7 @@ html( lang="en" )
         meta( name='description', content='Baking Bootstrap Snippets with Jade' )
         //- Bootswatch Theme
         link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.4/flatly/bootstrap.min.css", rel="stylesheet")
+        link(href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css", rel="stylesheet")
         link(href="/stylesheets/style.css", rel="stylesheet")
         block css
  
@@ -71,8 +71,10 @@ html( lang="en" )
             h2= title
             block content 
         block script
-            script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
-            script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' )
+            script( src='/bower_components/jquery/dist/jquery.js' )
+            script( src='/bower_components/bootstrap/dist/js/bootstrap.js' )
+            script( src='/bower_components/moment/min/moment.min.js' )
+            script( src='/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' )
 
 
         
