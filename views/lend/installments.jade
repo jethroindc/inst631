@@ -1,0 +1,19 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    form
+        .radio 
+            label
+                input(type="radio",onclick="jQuery('#next').attr('href','/lend/installments/schedule')",name="install")
+                | Yes
+        .radio 
+            label
+                input(type="radio",onclick="jQuery('#next').attr('href','/lend/reminders')",name="install")
+                | No
+    +bottom_menu( 'No, Go Back', '/lend/amount', 'OK, continue', '/lend/installments/schedule' )
+        
+    
+        

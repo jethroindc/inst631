@@ -1,0 +1,19 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    .row.top-buffer
+        a.btn.btn-default.btn-block(href="/lend/groups/select") Aunts/Uncles
+        a.btn.btn-default.btn-block(href="/lend/groups/elect") Brothers/Sisters
+        a.btn.btn-default.btn-block(href="/lend/groups/select") Cousins
+        a.btn.btn-default.btn-block(href="/lend/groups/select") Grandparents
+        a.btn.btn-default.btn-block(href="/lend/groups/select") Parents
+    .row.top-buffer
+        a.btn.btn-success.btn-block(href="/lend/groups/select") New Contact
+        
+    +bottom_menu( 'No, Go Back', '/lend/' )
+        
+    
+        

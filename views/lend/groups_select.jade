@@ -1,0 +1,15 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    .row.top-buffer
+        form(action='/lend/amount',method='post')
+            input#hidden_to(type="hidden", name="to" )
+            a.btn.btn-default.btn-block(href="#", onclick="$('#hidden_to').val('Marie Gordon');$('form').submit()") Marie Grodon
+            a.btn.btn-default.btn-block(href="#", onclick="$('#hidden_to').val('Jeremy Brown');$('form').submit()") Jeremy Brown
+            a.btn.btn-default.btn-block(href="#", onclick="$('#hidden_to').val('Russel Snow');$('form').submit()") Russel Snow
+            a.btn.btn-default.btn-block(href="#", onclick="$('#hidden_to').val('Elijah Taylor');$('form').submit()") Elijah Taylor
+        
+    +bottom_menu( 'No, Choose a different group', '/lend/new/groups')

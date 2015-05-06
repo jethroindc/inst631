@@ -18,7 +18,7 @@ mixin menu
                             span.glyphicon.glyphicon-star
                             | Account
                     li
-                        a(href="/lend/new") 
+                        a(href="/lend/") 
                             span.glyphicon.glyphicon-open
                             | Lend
                     li
@@ -45,6 +45,13 @@ mixin bottom_menu(prev, prev_link, next, next_link )
         .row.top-buffer
             .col-xs-12
                 a.btn.btn-default#prev(href=prev_link)= prev
+
+mixin form_submit_bottom_menu(prev, prev_link, next )
+    .row.top-buffer
+        .col-xs-6
+            a.btn.btn-default#prev(href=prev_link)= prev
+        .col-xs-6
+            a.btn.btn-default#next(href="#",onclick="$('form').submit()")= next
             
     
 mixin nice_date( date_id ) 

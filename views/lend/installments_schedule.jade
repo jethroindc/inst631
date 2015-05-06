@@ -1,0 +1,79 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    #error
+    form
+        .form-group
+            label(for="schedule") Payment schedule
+            select#schedule.form-control(name="repayment_period")
+                option Daily
+                option Weekly
+                option Biweekly
+                option Monthly
+        .form-group
+            label(for="start") Start Date
+            .input-group
+                input#start.form-control.dates(type="date")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+        .form-group
+            label(for="end") End Date
+            .input-group
+                input#end.form-control.dates(type="date")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-calendar
+    table.table
+        thead
+            tr  
+                th Installment Number
+                th Date
+                th Amount
+        tbody
+        
+
+    +bottom_menu( 'No, Go Back', '/lend/amount', 'OK, this looks good', '/lend/reminders' )
+    
+block append script
+    +nice_date( ".dates" )
+    script.
+        function updateTable() {
+            console.log( 'updating table' );
+            var schedule = $( "#schedule" ).val();
+            var start = $( "#start" ).val();
+            var end = $("#end").val();
+            if ( schedule && start && end ) {
+                console.log( schedule, start, end );
+                var payments = [];
+                var startDate = moment( start, 'MM/D/YYYY' );
+                var endDate = moment( end, 'MM/D/YYYY' );
+                var duration;
+                if ( schedule == 'Day' ) {
+                    duration = moment.duration( 1, 'day' );
+                } else if ( schedule == 'Week' ) {
+                    duration = moment.duration( 1, 'week' );
+                } else if ( schedule == 'Biweekly' ) {
+                    duration = moment.duration( 2, 'week' );
+                } else if ( schedule == 'Monthly' ) {
+                    duration = moment.duration( 1, 'month' );
+                }
+                
+                var curDate = startDate;
+                while ( curDate.isBefore( endDate )) {
+                    payments.push( { date: curDate } );
+                    curDate = curDate.add( duration );
+                }
+                
+                var eachPayment = payments.length
+            }
+        };
+        
+        $( document ).ready( function() {
+            $( "#schedule" ).change( updateTable );
+            $( ".dates" ).on( 'dp.change', updateTable );
+        });
+        
+    
+        

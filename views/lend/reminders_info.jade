@@ -1,4 +1,4 @@
-extends ../../layout
+extends ../layout
 
 block menu
     +menu
@@ -34,10 +34,10 @@ block content
                         | Text
                         
         .form-group
-            label(for="num_installments") Days before payment is due
+            label(for="num_installments") Hours before payment is due
             input.form-control(type="number")
             
-    +bottom_menu( 'No, Go Back', '/lend/new/amount', 'Yes, Continue', '/lend/new/review' )
+    +bottom_menu( 'No, Go Back', '/lend/amount', 'Looks good, let\'s continue', '/lend/review' )
         
     
         

@@ -5,15 +5,15 @@ block menu
     +menu
 
 block content
-    form
+    form( method='post', action='/borrow/review' )
         .form-group
             label(for="when") When will you repay the money
             .input-group
-                input#when.form-control(type="date")
+                input#when.form-control(type="date", name="date", value= date)
                 span.input-group-addon
                     span.glyphicon.glyphicon-calendar
                 
-    +bottom_menu( 'No, Go Home', '/', 'Yes, Continue', '/borrow/review' )        
+    +form_submit_bottom_menu( 'Choose a different person', '/borrow/from/select', 'OK' )        
 
 block append script 
     +nice_date( '#when' )

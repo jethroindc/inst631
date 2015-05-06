@@ -1,0 +1,16 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    form(method="post", action="/lend/methods")
+        .form-group
+            label(for="amount") How much money do you want to lend?
+            .input-group
+                span.input-group-addon $
+                input#amount.form-control(type="text",name="amount")
+    +form_submit_bottom_menu( 'No, Go Back', '/lend/groups/select', 'Looks good, let\'s continue' )
+        
+    
+        
