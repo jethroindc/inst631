@@ -32,7 +32,6 @@ mapRoute('/account', 'account', 'Edit Your Account' );
 mapRoute('/login', 'login', 'Login' );
 
 // track
-<<<<<<< HEAD
 mapRoute('/track', 'track/home', 'Tracking');
 mapRoute('/track/joec', 'track/joec', 'Tracking - Joe C.');
 mapRoute('/track/joec/receive', 'track/receive', 'Tracking - Receive Payment');
@@ -54,36 +53,6 @@ mapRoute('/lend/reminders/info', 'lend/reminders_info', 'How should we send remi
 mapRoute('/lend/review', 'lend/lets_review', 'Let\'s Review', ['amount', 'to', 'method' ] );
 mapRoute('/lend/final', 'lend/final', 'Final Review' );
 mapRoute('/lend/sent', 'lend/sent', 'Your Plan Has Been Sent' );
-=======
-mapRoute( '/track', 'track/home', 'Tracking' );
-mapRoute( '/track/joec', 'track/joec', 'Tracking - Joe C.' );
-mapRoute( '/track/joec/receive', 'track/receive', 'Tracking - Receive Payment' );
-mapRoute( '/track/joec/receive/cash', 'track/cash', 'Tracking - Receive Cash' );
-mapRoute( '/track/received', 'track/received', 'Tracking - Payment Received' );
-mapRoute( '/track/marie', 'track/marie', 'Tracking - Marie' );
-mapRoute( '/track/sent', 'track/sent', 'Tracking - Payment Sent' );
-mapRoute( '/track/marie/payment', 'track/marie_make_payment', 'Tracking - Marie' );
-
-// lend
-mapRoute( '/lend', 'lend/home', 'Lending' );
-mapRoute( '/lend/current', 'lend/current', 'Active Agreements' );
-mapRoute( '/lend/current/info', 'lend/current/info', 'PDF Agreement' );
-
-// lend - new
-mapRoute( '/lend/new', 'lend/new/start', 'New Lending Agreement' );
-mapRoute( '/lend/new/groups', 'lend/new/groups', 'Select Person to Lend To' );
-mapRoute( '/lend/new/groups/select', 'lend/new/groups_select', 'Select Person to Lend To' );
-mapRoute( '/lend/new/amount', 'lend/new/amount', 'Amount to Lend' );
-mapRoute( '/lend/new/methods', 'lend/new/methods', 'Methods for Repayment' );
-mapRoute( '/lend/new/installments', 'lend/new/installments', 'Able to Repay in Installments' );
-mapRoute( '/lend/new/installments/schedule', 'lend/new/installments_schedule', 'Select Installment Schedule' );
-mapRoute( '/lend/new/reminders', 'lend/new/reminders', 'Send Automated Reminders?' );
-mapRoute( '/lend/new/reminders/info', 'lend/new/reminders_info', 'How should we send reminders?' );
-mapRoute( '/lend/new/review', 'lend/new/lets_review', 'Let\'s Review' );
-mapRoute( '/lend/new/final', 'lend/new/final', 'Final Review' );
-mapRoute( '/lend/new/sent', 'lend/new/sent', 'Your Plan Has Been Sent' );
-mapRoute( '/lend/new/contact', 'lend/new/contact', 'Add New Contact' );
->>>>>>> d924700e995c7ba7bd4a92184b38e364b9736ab9
 
 // borrow
 mapRoute('/borrow', 'borrow/home', 'Request to borrow money (step 1 of 5)', ['amount'] );
