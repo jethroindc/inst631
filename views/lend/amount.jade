@@ -4,13 +4,28 @@ block menu
     +menu
 
 block content
+    #error
     form(method="post", action="/lend/methods")
         .form-group
             label(for="amount") How much money do you want to lend?
             .input-group
                 span.input-group-addon $
-                input#amount.form-control(type="text",name="amount")
-    +form_submit_bottom_menu( 'No, Go Back', '/lend/groups/select', 'Looks good, let\'s continue' )
+                if locals.amount
+                    input#amount.form-control(type="text",name="amount",value="#{amount}")
+                else
+                    input#amount.form-control(type="text",name="amount")
+    +form_submit_bottom_menu( 'Go Back', '/lend/groups/select', 'OK, let\'s continue' )
         
     
+block append script
+    script.
+        $( document ).ready( function() {
+            $( "form" ).submit( function( event ) {
+                var val = $('#amount').val();
+                if ( !val ) {
+                    showErrorMessage( 'Please enter an amount');
+                    event.preventDefault();
+                }
+            });
+        });
         

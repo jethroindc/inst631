@@ -15,19 +15,19 @@ mixin menu
                 ul.nav.navbar-nav
                     li
                         a(href="/account") 
-                            span.glyphicon.glyphicon-star
+                            img( src="/images/reminders-icon-extra-small.png" )
                             | Account
                     li
                         a(href="/lend/") 
-                            span.glyphicon.glyphicon-open
+                            img( src="/images/lend-icon-extra-small.png" )
                             | Lend
                     li
                         a(href="/borrow") 
-                            span.glyphicon.glyphicon-save
+                            img( src="/images/borrow-icon-extra-small.png" )
                             | Borrow
                     li
                         a(href="/track") 
-                            span.glyphicon.glyphicon-ok-circle
+                            img( src="/images/track-icon-extra-small.png" )
                             | Track
                     li
                         a(href="#") 
@@ -56,6 +56,9 @@ mixin form_submit_bottom_menu(prev, prev_link, next )
     
 mixin nice_date( date_id ) 
     script jQuery( function() { $( '#{date_id}' ).datetimepicker( { format: 'MM/D/YYYY' }); });
+    
+mixin error_message( msg )
+    $("#error" ).html( '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>#{msg}</div>');
         
             
 html( lang="en" )
@@ -81,7 +84,12 @@ html( lang="en" )
             script( src='/bower_components/jquery/dist/jquery.js' )
             script( src='/bower_components/bootstrap/dist/js/bootstrap.js' )
             script( src='/bower_components/moment/min/moment.min.js' )
+            script( src='/bower_components/accounting/accounting.min.js' )
             script( src='/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' )
+            script.
+                function showErrorMessage( msg ) {
+                    $("#error" ).html( '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + msg + '</div>');
+                }
 
 
         

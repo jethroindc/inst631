@@ -4,24 +4,50 @@ block menu
     +menu
 
 block content
+    #error
     form(method="post", action="/lend/installments" )
         .checkbox 
             label
-                input(type="checkbox", name="method", value="Cash" )
+                if ( locals.method && method.indexOf( 'Cash' ) > -1 )
+                    input(type="checkbox", name="method", value="Cash", checked="checked")
+                else 
+                    input(type="checkbox", name="method", value="Cash" )
                 | Cash
         .checkbox 
             label
-                input(type="checkbox", name="method", value="Money Order" )
+                if ( locals.method && method.indexOf( 'Money Order' ) > -1 )
+                    input(type="checkbox", name="method", value="Money Order", checked="checked")
+                else 
+                    input(type="checkbox", name="method", value="Money Order" )
                 | Money Order
         .checkbox 
             label
-                input(type="checkbox", name="method", value="Online Transfer" )
+                if ( locals.method && method.indexOf( 'Online Transfer' ) > -1 )
+                    input(type="checkbox", name="method", value="Online Transfer", checked="checked")
+                else 
+                    input(type="checkbox", name="method", value="Online Transfer" )
                 | Online Transfer
         .checkbox 
             label
-                input(type="checkbox", name="method", value="Goods or Services" )
+                if ( locals.method && method.indexOf( 'Goods or Services' ) > -1 )
+                    input(type="checkbox", name="method", value="Goods or Services", checked="checked")
+                else 
+                    input(type="checkbox", name="method", value="Goods or Services" )
                 | Goods or Services
-    +form_submit_bottom_menu( 'No, Go Back', '/lend/amount', 'Looks good, let\'s continue' )
+    +form_submit_bottom_menu( 'Go Back', '/lend/amount', 'OK, let\'s continue' )
         
     
+block append script
+    script.
+        $( document ).ready( function() {
+            $( "form" ).submit( function( event ) {
+                var val = $('input:checkbox[name=method]:checked').val();
+                if ( !val ) {
+                    showErrorMessage( 'Please select at least one method');
+                    event.preventDefault();
+                }
+            });
+        });
         
+        
+

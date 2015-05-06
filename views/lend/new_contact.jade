@@ -1,0 +1,60 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    #error
+    form( action='/lend/amount', method="post" )
+        input#hidden_to(type="hidden", name="to" )
+        .form-group
+            label(for="photo") Photo
+            .input-group
+                input#photo.form-control(type="text")
+                span.input-group-addon
+                    span.glyphicon.glyphicon-user
+        .form-group
+            label(for="first") First Name
+            input#first.form-control(type="text")
+        .form-group
+            label(for="last") Last Name
+            input#last.form-control(type="text")
+        .form-group
+            label(for="email") Email
+            input#email.form-control(type="text")
+        .form-group
+            label(for="cell") Cell #
+            input#cell.form-control(type="text")
+        .form-group
+            label(for="group") Group
+            select#schedule.form-control(name="group")
+                option Aunt/Uncles
+                option Brothers/Sisters
+                option Cousins
+                option Grandparents
+                option Parents
+
+
+    +form_submit_bottom_menu( 'Cancel', '/lend/groups', 'Create Contact' )
+    
+block append script
+    script.
+        function updateTo() {
+            var first = $("#first").val();
+            var last = $("#last").val();
+            var to = first + " " + last;
+            $("#hidden_to").val( to );
+        };
+        
+        $( document ).ready( function() {
+            $( "#first" ).change( updateTo );
+            $( "#last" ).change( updateTo );
+            $( "form" ).submit( function( event ) {
+                var first = $("#first").val();
+                var last = $("#last").val();
+                if ( !first || !last ) {
+                    showErrorMessage( "Please enter both a first and last name" );
+                    event.preventDefault();
+                }
+            });
+        });

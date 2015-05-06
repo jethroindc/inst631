@@ -34,7 +34,7 @@ block content
         tbody
         
 
-    +bottom_menu( 'No, Go Back', '/lend/amount', 'OK, this looks good', '/lend/reminders' )
+    +bottom_menu( 'Go Back', '/lend/installments', 'OK, this looks good', '/lend/reminders' )
     
 block append script
     +nice_date( ".dates" )
@@ -46,13 +46,18 @@ block append script
             var end = $("#end").val();
             if ( schedule && start && end ) {
                 console.log( schedule, start, end );
+                
                 var payments = [];
                 var startDate = moment( start, 'MM/D/YYYY' );
                 var endDate = moment( end, 'MM/D/YYYY' );
+                
+                if ( endDate.isBefore( startDate )) {
+                    showErrorMessage( "Start date should be before the end date");
+                }
                 var duration;
-                if ( schedule == 'Day' ) {
+                if ( schedule == 'Daily' ) {
                     duration = moment.duration( 1, 'day' );
-                } else if ( schedule == 'Week' ) {
+                } else if ( schedule == 'Weekly' ) {
                     duration = moment.duration( 1, 'week' );
                 } else if ( schedule == 'Biweekly' ) {
                     duration = moment.duration( 2, 'week' );
@@ -60,13 +65,25 @@ block append script
                     duration = moment.duration( 1, 'month' );
                 }
                 
+                if ( duration == null ) {
+                    console.log( "unable to determin type of duration from schedule: " + schedule );
+                    return;
+                }
+                
                 var curDate = startDate;
                 while ( curDate.isBefore( endDate )) {
-                    payments.push( { date: curDate } );
+                    payments.push( { date: moment( curDate ) } );
+                    console.log( curDate );
                     curDate = curDate.add( duration );
                 }
                 
-                var eachPayment = payments.length
+                var eachPayment = #{amount} / payments.length;
+                var text, i;
+                for (i = 0; i < payments.length; i++) {
+                    var date = payments[i].date;
+                    text += "<tr><td>" + (i+1) + "</td><td>" + date.format( "MM/DD/YYYY" ) + "</td><td>" + accounting.formatMoney( eachPayment ) + "</td></tr>"; 
+                }
+                $('tbody').html( text );
             }
         };
         

@@ -1,0 +1,40 @@
+extends ../layout
+
+block menu
+    +menu
+
+block content
+    img.center-block.img-responsive(src="/images/track_jorge.png")
+    .row
+        .col-xs-3
+        .col-xs-6
+            h4 Jorge would like to borrow using the following conditions
+            table.table.table-hover.table-bordered
+                tbody
+                    tr
+                        th Amount
+                        td $150.00
+                    tr
+                        th Repay by
+                        td 07/21/2015
+                    tr
+                        th next payment due by
+                        td 05/12/2015
+        .col-xs-3
+    .row
+        .col-xs-3
+        .col-xs-1
+            a.btn.btn-success Approve
+        .col-xs-1
+            a.btn.btn-warning Reject
+    .row.top-buffer
+        .col-xs-3
+        .col-xs-6
+            img( src="/images/Adobe_PDF_file_icon_32x32.png") 
+            | Save as PDF
+                    
+                            
+        
+        
+    
+        

@@ -4,16 +4,29 @@ block menu
     +menu
 
 block content
+    #error
     form
         .radio 
             label
-                input(type="radio",onclick="jQuery('#next').attr('href','/lend/reminders/info')",name="install")
+                input(type="radio",onclick="jQuery('#next').attr('href','/lend/reminders/info')",name="remind")
                 | Yes
         .radio 
             label
-                input(type="radio",onclick="jQuery('#next').attr('href','/lend/review')",name="install")
+                input(type="radio",onclick="jQuery('#next').attr('href','/lend/review')",name="remind")
                 | No
-    +bottom_menu( 'No, Go Back', '/lend/amount', 'Looks good, let\'s continue', '/lend/reminders/info' )
+    +bottom_menu( 'Go Back', '/lend/installments', 'OK, let\'s continue', '/lend/reminders/info' )
         
     
         
+block append script
+    script.
+        $( document ).ready( function() {
+            $( "#next" ).click( function( event ) {
+                var val = $('input:radio[name=remind]:checked').val();
+                if ( val == null ) {
+                    showErrorMessage( 'Please select "Yes" or "No"');
+                    event.preventDefault();
+                }
+            });
+        });
+

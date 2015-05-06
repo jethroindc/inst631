@@ -4,11 +4,27 @@ block menu
     +menu
 
 block content
+    #error
     form(action='/borrow/from',method='post')
         .form-group
             label(for="amount") How much do you want to borrow?
             .input-group
                 span.input-group-addon $
                 input#amount.form-control(type="text",name="amount", value= amount)
-    +form_submit_bottom_menu( 'No, Go Home', '/', 'OK' )        
+    +form_submit_bottom_menu( 'Cancel', '/', 'OK' )        
+    
+    
+block append script
+    script.
+        $( document ).ready( function() {
+            $( "form" ).submit( function( event ) {
+                var val = $('#amount').val();
+                if ( !val ) {
+                    showErrorMessage( 'Please enter an amount');
+                    event.preventDefault();
+                }
+            });
+        });
+        
+    
         

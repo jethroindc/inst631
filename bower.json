@@ -19,6 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "eonasdan-bootstrap-datetimepicker": "~4.7.14"
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
+    "accounting": "0.3.2"
   }
 }
