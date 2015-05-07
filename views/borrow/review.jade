@@ -7,13 +7,13 @@ block menu
 block content
 	p I would like to borrow
 	p 
-		strong= amount
+		strong= dollar_amount
 	p from
 	p
 		strong= from
 	p and would agree to repay by
 	strong= date
 	- var send = 'Send Request to ' + from + ' using Bum-a-Buck';
-	+bottom_menu( 'No, go back', '/borrow/repay', send, '/')        
+	+bottom_menu( 'No, go back', '/borrow/repay', send, '/borrow/sent')        
 	
 

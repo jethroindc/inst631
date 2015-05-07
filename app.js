@@ -60,11 +60,14 @@ mapRoute('/lend/methods', 'lend/methods', 'Methods for Repayment', ['method']);
 mapPost('/lend/installments', 'lend/installments', 'Able to Repay in Installments?', ['method']);
 mapRoute('/lend/installments', 'lend/installments', 'Able to Repay in Installments?');
 mapRoute('/lend/installments/schedule', 'lend/installments_schedule', 'Select Installment Schedule', ['amount']);
+mapPost('/lend/reminders', 'lend/reminders', 'Send Automated Reminders?', ['schedule_details']);
 mapRoute('/lend/reminders', 'lend/reminders', 'Send Automated Reminders?');
 mapRoute('/lend/reminders/info', 'lend/reminders_info', 'How should we send reminders?');
-mapRoute('/lend/review', 'lend/lets_review', 'Let\'s Review', ['amount', 'to', 'method']);
-mapRoute('/lend/final', 'lend/final', 'Final Review');
-mapRoute('/lend/sent', 'lend/sent', 'Your Plan Has Been Sent');
+mapPost('/lend/reminders/info', 'lend/reminders_info', 'How should we send reminders?', ['remind']);
+mapRoute('/lend/review', 'lend/lets_review', 'Let\'s Review', ['amount', 'to', 'method', 'schedule_details']);
+mapPost('/lend/review', 'lend/lets_review', 'Let\'s Review', ['remind'], ['amount', 'to', 'method', 'remind', 'schedule_details']);
+mapRoute('/lend/final', 'lend/final', 'Final Review', ['amount', 'to', 'method' ]);
+mapRoute('/lend/sent', 'lend/sent', 'Your Plan Has Been Sent', ['to']);
 
 // borrow
 mapRoute('/borrow', 'borrow/home', 'Request to borrow money (step 1 of 5)', ['amount']);
@@ -75,6 +78,7 @@ mapRoute('/borrow/from/select', 'borrow/from_select', 'Request to borrow money (
 mapPost('/borrow/repay', 'borrow/repay', 'Request to borrow money (step 4 of 5)', ['from']);
 mapRoute('/borrow/repay', 'borrow/repay', 'Request to borrow money (step 4 of 5)', ['date']);
 mapPost('/borrow/review', 'borrow/review', 'Review your request to borrow money (step 5 of 5)', ['date'], ['amount', 'from', 'date']);
+mapRoute('/borrow/sent', 'borrow/sent', 'Your Request Has Been Sent', ['from']);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -110,6 +114,13 @@ app.use(function (err, req, res, next) {
 });
 
 
+
+// handle a post request
+//     path            - path to handle
+//     template        - name of jade template to use
+//     title           - title of the page
+//     params          - parameters to save to the session from the post request
+//     template_params - parameters to pull from the session to pass to the template
 function mapPost(path, template, _title, params, template_params) {
     "use strict";
     app.post(path, function (req, res, next) {
@@ -125,6 +136,10 @@ function mapPost(path, template, _title, params, template_params) {
     });
 }
 
+// create a dictionary of template parameters pulled from the session
+//    title          - title to pass to the page
+//    session        - session from the request
+//    session_params - which parmeters to pull from the session
 function createTemplateParams(_title, session, session_params) {
     var final_params = {
         title: _title
@@ -146,6 +161,11 @@ function createTemplateParams(_title, session, session_params) {
 }
 
 
+// handle a get request
+//     path - path segnment to handle
+//     template - jade template to use
+//     title - title to use for the page
+//     template_params - list of paraemters to pull from the session and pass to the template
 function mapRoute(path, template, _title, template_params) {
     "use strict";
     app.get(path, function (req, res, next) {

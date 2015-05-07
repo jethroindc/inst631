@@ -5,7 +5,8 @@ block menu
 
 block content
     #error
-    form
+    form( method="post", action="/lend/reminders" )
+        input#schedule_details(type="hidden",name="schedule_details")
         .form-group
             label(for="schedule") Payment schedule
             select#schedule.form-control(name="repayment_period")
@@ -34,7 +35,7 @@ block content
         tbody
         
 
-    +bottom_menu( 'Go Back', '/lend/installments', 'OK, this looks good', '/lend/reminders' )
+    +form_submit_bottom_menu( 'Go Back', '/lend/installments', 'OK, let\'s continue' )
     
 block append script
     +nice_date( ".dates" )
@@ -53,6 +54,9 @@ block append script
                 
                 if ( endDate.isBefore( startDate )) {
                     showErrorMessage( "Start date should be before the end date");
+                    return;
+                } else {
+                    hideErrorMessage();
                 }
                 var duration;
                 if ( schedule == 'Daily' ) {
@@ -78,11 +82,14 @@ block append script
                 }
                 
                 var eachPayment = #{amount} / payments.length;
-                var text, i;
+                var text = "";
+                var i;
+                
                 for (i = 0; i < payments.length; i++) {
                     var date = payments[i].date;
                     text += "<tr><td>" + (i+1) + "</td><td>" + date.format( "MM/DD/YYYY" ) + "</td><td>" + accounting.formatMoney( eachPayment ) + "</td></tr>"; 
                 }
+                $("#schedule_details").val( text );
                 $('tbody').html( text );
             }
         };

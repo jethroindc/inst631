@@ -4,8 +4,19 @@ block menu
     +menu
 
 block content
-    p For the next 3 days, this loan plan with be set as 'Pending'. You or [borrower] can make unlimited changes during this time.  On [date], this plan will become a binding agreement.  At that point, it cannot be changed and both parties much accept the terms.
-    +bottom_menu( 'No, Go Back', '/lend/groups/select', 'I Understand', '/lend/sent' )
+    p For the next 3 days, this loan plan with be set as 'Pending'. 
+    p You or #{to} can make unlimited changes during this time.  
+    p On 
+        span#three_days date
+        | , this plan will become a binding agreement.  At that point, it cannot be changed and both parties must accept the terms.
+    +bottom_menu( 'Go Back', '/lend/groups/select', 'I Understand', '/lend/sent' )
         
     
         
+block append script
+    script.
+        $(document).ready( function() {
+            var date = moment();
+            date.add( 3, 'days' );
+            $("#three_days").html( date.format( "MMMM D, YYYY" ));
+        });

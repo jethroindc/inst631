@@ -5,23 +5,23 @@ block menu
 
 block content
     #error
-    form
+    form( method="post", action="/lends/reminders/info" )
         .radio 
             label
-                input(type="radio",onclick="jQuery('#next').attr('href','/lend/reminders/info')",name="remind")
+                input(type="radio",onclick="$('form').attr('action','/lend/reminders/info')",name="remind", value="yes")
                 | Yes
         .radio 
             label
-                input(type="radio",onclick="jQuery('#next').attr('href','/lend/review')",name="remind")
+                input(type="radio",onclick="$('form').attr('action','/lend/review')",name="remind", value="no")
                 | No
-    +bottom_menu( 'Go Back', '/lend/installments', 'OK, let\'s continue', '/lend/reminders/info' )
+    +form_submit_bottom_menu( 'Go Back', '/lend/installments', 'OK, let\'s continue' )
         
     
         
 block append script
     script.
         $( document ).ready( function() {
-            $( "#next" ).click( function( event ) {
+            $( "form" ).submit( function( event ) {
                 var val = $('input:radio[name=remind]:checked').val();
                 if ( val == null ) {
                     showErrorMessage( 'Please select "Yes" or "No"');

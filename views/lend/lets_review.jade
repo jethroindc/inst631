@@ -9,15 +9,24 @@ block content
         strong= to 
     p the amount of 
     p
-        strong= amount
+        strong= dollar_amount
     p #{to} can pay by the following methods
     
     p
         strong= method
-        
-    p They can pay in installments set as follows: 
-    p If #{to} does not pay on time, there will be a % penalty applied to the remaining loan amount.  
-    p Reminders have been set for you and #{to}
+
+    if (locals.schedule_details)
+        p They can pay in installments set as follows:
+        table.table
+            thead
+                tr  
+                    th Installment Number
+                    th Date
+                    th Amount
+            tbody!= schedule_details
+
+    if reminders == 'yes'
+        p Reminders have been set for you and #{to}
     
     +bottom_menu( 'Go Back', '/lend/installments', 'Agree', '/lend/final' )
         
